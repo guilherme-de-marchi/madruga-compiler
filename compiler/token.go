@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	// single-character
+	// Single-character
 	LeftParen = iota
 	RightParen
 	LeftBrace
@@ -22,7 +22,7 @@ const (
 	Greater
 	Less
 
-	// Two characters
+	// Composite characters
 	BangEqual
 	EqualEqual
 	GreaterEqual

@@ -23,5 +23,7 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println("Tokens: ", tks)
+	default:
+		fmt.Println("Usage: go run . [optional: src path]")
 	}
 }

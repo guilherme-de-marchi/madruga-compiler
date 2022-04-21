@@ -43,9 +43,9 @@ func (src Source) NextFunc(curr int, f func(rune) bool) bool {
 	return f(rune(src[curr+1]))
 }
 
-// Returns -1 if dont find.
-// Else, return the index of the next occurence of exp.
-func (src Source) FindNextOcurr(curr int, exp rune) int {
+// FindNextOccur returns -1 if it doesn't find.
+// Otherwise, return the index of the next occurrence of exp.
+func (src Source) FindNextOccur(curr int, exp rune) int {
 	for i, v := range src[curr+1:] {
 		if rune(v) == exp {
 			return curr + i
@@ -54,7 +54,7 @@ func (src Source) FindNextOcurr(curr int, exp rune) int {
 	return -1
 }
 
-// Return the first index where all funcs are false
+// IterateFunc return the first index where all functions return false
 func (src Source) IterateFunc(curr int, arrF ...func(int, rune) bool) int {
 	for i, v := range src[curr:] {
 		var ok bool
@@ -216,7 +216,7 @@ func (src Source) Scan() ([]*Token, error) {
 			}
 			tks = append(tks, NewToken(Dot, nil, ln))
 		case '"':
-			i := src.FindNextOcurr(curr, '"')
+			i := src.FindNextOccur(curr, '"')
 			if i == -1 {
 				return tks, NewSyntaxErr(src.GetLine(ln), curr)
 			}
